@@ -1,9 +1,9 @@
 
+require('dotenv').config();
 const express = require('express');
 const Stripe = require('stripe');
 const bodyParser = require('body-parser');
 const cors = require('cors');
-require('dotenv').config();
 
 const app = express();
 const stripe = Stripe(process.env.STRIPE_SECRET_KEY);
@@ -19,7 +19,7 @@ app.post('/create-checkout-session', async (req, res) => {
       payment_method_types: ['card'],
       line_items: [
         {
-          price: 'price_1NpSirDfCWORHf3vw20rFL3c',
+          price: 'price_1NpSirDfCWORHf3vw20rFL3c',  // Make sure this price ID matches one in your Stripe account
           quantity: chrono,
         },
       ],
@@ -36,4 +36,7 @@ app.post('/create-checkout-session', async (req, res) => {
 
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => console.log(`Server is running on port ${PORT}`));
+
+
+
 
