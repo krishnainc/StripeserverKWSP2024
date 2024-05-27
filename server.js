@@ -1,15 +1,15 @@
-require('dotenv').config();
 
-import express from 'express';
-import Stripe from 'stripe';
-import { json } from 'body-parser';
-import cors from 'cors';
+const express = require('express');
+const Stripe = require('stripe');
+const bodyParser = require('body-parser');
+const cors = require('cors');
+require('dotenv').config();
 
 const app = express();
 const stripe = Stripe(process.env.STRIPE_SECRET_KEY);
 
 app.use(cors());
-app.use(json());
+app.use(bodyParser.json());
 
 app.post('/create-checkout-session', async (req, res) => {
   const { chrono, authcode, phone, name, userUid, start, selectedCourt } = req.body;
@@ -36,3 +36,4 @@ app.post('/create-checkout-session', async (req, res) => {
 
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => console.log(`Server is running on port ${PORT}`));
+
