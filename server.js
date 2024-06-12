@@ -19,7 +19,7 @@ app.post('/create-checkout-session', async (req, res) => {
       payment_method_types: ['card','fpx'],
       line_items: [
         {
-          price: 'price_1PQwGaDfCWORHf3vHv7ei1sZ',  // Make sure this price ID matches one in your Stripe account
+          price: 'price_1PQwtUDfCWORHf3vBk3393nZ',  // Make sure this price ID matches one in your Stripe account
           quantity: chrono,
         },
       ],
